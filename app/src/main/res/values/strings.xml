@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Final Project 1 Hacktiv</string>
+    <string name="task_completed">TASK COMPLETED</string>
+    <string name="todo_list">Todo List</string>
+    <string name="deskripsi">Deskripsi</string>
+    <string name="date">Date</string>
+    <string name="tambahkan">Tambahkan</string>
+    <string name="description">Description</string>
+    <string name="judul">Judul</string>
+    <string name="add_data">add data</string>
 </resources>

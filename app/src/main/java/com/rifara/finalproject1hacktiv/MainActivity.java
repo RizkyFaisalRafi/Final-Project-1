@@ -19,7 +19,6 @@ import android.widget.ProgressBar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.rifara.finalproject1hacktiv.adapter.TodoListAdapter;
-import com.rifara.finalproject1hacktiv.db.DatabaseHelper;
 import com.rifara.finalproject1hacktiv.db.TodoListHelper;
 import com.rifara.finalproject1hacktiv.entity.TodoList;
 import com.rifara.finalproject1hacktiv.helper.MappingHelper;
@@ -48,8 +47,7 @@ public class MainActivity extends AppCompatActivity implements LoadNotesCallback
                         rvTodo.smoothScrollToPosition(adapter.getItemCount() - 1);
 
                         showSnackbarMessage("Satu item berhasil ditambahkan");
-                    }
-                    else if (result.getResultCode() == NoteAddUpdateActivity.RESULT_UPDATE) {
+                    } else if (result.getResultCode() == NoteAddUpdateActivity.RESULT_UPDATE) {
 
                         TodoList note = result.getData().getParcelableExtra(NoteAddUpdateActivity.EXTRA_NOTE);
                         int position = result.getData().getIntExtra(NoteAddUpdateActivity.EXTRA_POSITION, 0);
@@ -58,13 +56,12 @@ public class MainActivity extends AppCompatActivity implements LoadNotesCallback
                         rvTodo.smoothScrollToPosition(position);
 
                         showSnackbarMessage("Satu item berhasil diubah");
-                    }
-                    else if (result.getResultCode() == NoteAddUpdateActivity.RESULT_DELETE) {
+                    } else if (result.getResultCode() == NoteAddUpdateActivity.RESULT_DELETE) {
                         int position = result.getData().getIntExtra(NoteAddUpdateActivity.EXTRA_POSITION, 0);
 
                         adapter.removeItem(position);
 
-                        showSnackbarMessage("Satu item berhasil dihapus");
+                        showSnackbarMessage("Satu item berhasil terselesaikan");
                     }
                 }
             });
@@ -136,7 +133,6 @@ public class MainActivity extends AppCompatActivity implements LoadNotesCallback
     }
 
 
-
     private static class LoadNotesAsync {
 
         private final WeakReference<Context> weakContext;
@@ -176,5 +172,6 @@ public class MainActivity extends AppCompatActivity implements LoadNotesCallback
 
 interface LoadNotesCallback {
     void preExecute();
+
     void postExecute(ArrayList<TodoList> notes);
 }
